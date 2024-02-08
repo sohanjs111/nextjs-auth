@@ -41,15 +41,24 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+/.pnp
+.pnp.js
+.yarn/install-state.gz
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
 
 # TypeScript cache
 *.tsbuildinfo
+*.tsbuildinfo
+next-env.d.ts
 
 # Optional npm cache directory
 .npm
+
+# misc
+.DS_Store
+*.pem
 
 # Optional eslint cache
 .eslintcache
@@ -121,6 +130,7 @@ dist
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
+/coverage
 
 # yarn v2
 .yarn/cache

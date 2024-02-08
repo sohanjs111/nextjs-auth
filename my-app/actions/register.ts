@@ -10,5 +10,7 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
         return { error: "Invalid fields!" };
     }
 
+
+
     return { success: "Email sent!" };
 };
