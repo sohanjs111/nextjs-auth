@@ -3,10 +3,8 @@ import { BackButton } from "@/components/auth/back-button";
 import { CardWrapper } from "@/components/auth/card-wrapper";
 import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
 
-
- export const ErrorCard = ()  => {
-
-    return(
+export const ErrorCard = () => {
+    return (
         <CardWrapper
             headerLabel="Opps! Something went wrong!"
             backButtonHref="/login"
@@ -16,6 +14,5 @@ import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
                 <ExclamationTriangleIcon className="text-destructive" />
             </div>
         </CardWrapper>
-        
     );
- };
+};
