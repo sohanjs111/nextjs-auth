@@ -1,8 +1,8 @@
+import { VerificationForm } from "@/components/auth/verification-form";
+
 const VerificationPage = () => {
     return ( 
-        <div>
-        New Verification
-        </div>
+        <VerificationForm />
      );
 }
  
