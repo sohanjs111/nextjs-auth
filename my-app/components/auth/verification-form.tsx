@@ -1,18 +1,37 @@
 "use client";
 
 import { BeatLoader } from "react-spinners"
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { verification } from "@/actions/verification";
 import { CardWrapper } from "@/components/auth/card-wrapper";
+import { FormError } from "@/components/form-error";
+import { FormSuccess } from "@/components/form-success";
 
 export const VerificationForm = () => {
-    const searchParams = useSearchParams();
+    const [error, setError] = useState<string | undefined>();
+    const [success, setSucces] = useState<string | undefined>();
 
+
+    const searchParams = useSearchParams();
     const token = searchParams.get("token");
 
     const onSubmit = useCallback(() => {
-        console.log(token);
-    }, [token]);
+        if (success || error) return;
+        if (!token) {
+            setError("Missing token!");
+            return;
+        }
+
+        verification(token)
+            .then((data) => {
+                setSucces(data.success);
+                setError(data.error);
+            })
+            .catch(() => {
+                setError("Somthing went wrong!")
+            })
+    }, [token, success, error]);
 
     useEffect(() => {
         onSubmit();
@@ -25,7 +44,13 @@ export const VerificationForm = () => {
             backButtonHref="/login"
         >
             <div className="flex items-center w-full justify-center">
-                <BeatLoader />
+                {!success && !error && (
+                    <BeatLoader />
+                )}
+                <FormSuccess message={success} />
+                {!success && (
+                    <FormError message={error} />
+                )}
             </div>
         </CardWrapper>
     
