@@ -50,7 +50,6 @@ export const {
                   where: { id: twoFactorConfirmation.id }
                 });
             }
-
             return true;
         },
         async session({token, session}) {
