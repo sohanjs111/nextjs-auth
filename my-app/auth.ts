@@ -6,11 +6,7 @@ import { db } from "@/lib/db";
 import authConfig from "./auth.config";
 import { getTwoFactorConfirmationByUserId } from "./data/two-factor-confirmation";
 
-declare module "next-auth" {
-    interface User {
-      role: UserRole,
-    }
-}
+
 
 export const { 
     handlers: { GET, POST }, 
